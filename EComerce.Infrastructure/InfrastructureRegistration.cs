@@ -1,9 +1,12 @@
 ﻿using EComerce.Core.Interfaces;
+using EComerce.Core.Services;
 using EComerce.Infrastructure.Data;
 using EComerce.Infrastructure.Repositories;
+using EComerce.Infrastructure.Repositories.Service;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +24,9 @@ namespace EComerce.Infrastructure
             //Services.AddScoped<IProductRepository, ProductRepository>();
             //Services.AddScoped<IPhotoRepository, PhotoRepository>();
             Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            Services.AddSingleton<IFileProvider>(new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(),"wwwroot")));
+            Services.AddSingleton<IimageManagementService,ImageManagementService>();
+
             //apply dbcontext
             Services.AddDbContext<AppDbContext>(options =>
             {

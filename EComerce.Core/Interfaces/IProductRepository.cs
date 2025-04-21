@@ -9,5 +9,6 @@ namespace EComerce.Core.Interfaces
 {
     public interface IProductRepository:IGenericIRepository<Product>
     {
+        Task<bool>  DeleteAsync(int id);
     }
 }

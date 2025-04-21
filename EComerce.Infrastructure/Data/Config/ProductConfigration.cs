@@ -16,13 +16,14 @@ namespace EComerce.Infrastructure.Data.Config
             builder.Property(p => p.Id).IsRequired();
             builder.Property(p=>p.Name).IsRequired().HasMaxLength(50);
             builder.Property(p => p.Description).IsRequired().HasMaxLength(150);
-            builder.Property(p => p.Price).HasColumnType("decimal(18,2)");
+            builder.Property(p => p.NewPrice).HasColumnType("decimal(18,2)");
+            builder.Property(p => p.OldPrice).HasColumnType("decimal(18,2)");
             builder.HasData(new Product()
             {
                 Id=1,
                 Name = "TV",
                 Description = "TV has many programs",
-                Price = 2550,
+                NewPrice = 2550,
                 CategoryId = 1
             });
         }

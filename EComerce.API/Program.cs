@@ -1,3 +1,6 @@
+
+
+using EComerce.API.Mapping;
 using EComerce.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.InfrastructureConfigration(builder.Configuration);
-
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
